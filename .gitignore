@@ -1,0 +1,3 @@
+# openmvs-docker
+/data/**
+!/data/README.md

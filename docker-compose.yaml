@@ -1,0 +1,21 @@
+version: '3'
+services:
+  ros1-melodic:
+    build: ./docker
+    image: ntopenmvs:latest
+    container_name: ntopenmvs-app
+    environment:
+      - DISPLAY=${DISPLAY} # GUI
+      - QT_X11_NO_MITSHM=1 # GUI
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw # GUI
+    shm_size: '8gb'
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
