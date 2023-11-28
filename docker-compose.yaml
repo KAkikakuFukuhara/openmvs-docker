@@ -9,7 +9,8 @@ services:
       - QT_X11_NO_MITSHM=1 # GUI
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw # GUI
-    shm_size: '8gb'
+      - ./data:/workspace/data
+    mem_limit: 16g
     stdin_open: true
     tty: true
     deploy:
